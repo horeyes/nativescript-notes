@@ -1,0 +1,22 @@
+#event-icon{
+    height: 24dp;
+    margin-right: 16dp;
+}
+
+#drawer-label{
+    margin-left: 16dp;
+    vertical-align: middle;
+}
+
+#text-view-container{
+    margin: 16dp;
+}
+
+#title-text-view{
+    font-weight: Bold;
+}
+
+.text-view{
+    margin: 16dp;
+    background-color: white;
+}

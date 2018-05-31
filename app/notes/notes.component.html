@@ -1,0 +1,38 @@
+<ActionBar title="Notes" icon="" class="action-bar">
+  <NavigationButton *ngIf="!isSelecting" icon="res://baseline_menu_white_24" (tap)="drawerToggle()"></NavigationButton>
+  <NavigationButton *ngIf="isSelecting" icon="res://baseline_arrow_back_white_24" (tap)="cancel()"></NavigationButton>
+  <Image *ngIf="isSelecting" src="res://baseline_delete_white_24" id="action-bar-icon" horizontalAlignment="Right" (tap)="delete()"></Image>
+</ActionBar>
+
+<RadSideDrawer tkExampleTitle tkToggleNavButton drawerLocation="left" (drawerOpened)="onDrawerOpened()" (drawerClosed)="onDrawerClosed()">
+  <StackLayout tkDrawerContent class="drawer">
+    <GridLayout rows="auto, auto" columns="auto, *" verticalAlignment="top" horizontalAlignment="left" id="drawer">
+      <Image col="0" src="res://baseline_notes_black_24" class="drawer-icons"></Image>
+      <Label col="1" text="Notes" textWrap="true" class="drawer-labels" verticalAlignment="middle" [nsRouterLink]="['/notes']"></Label>
+
+      <Image row="1" col="0" src="res://baseline_event_black_24" class="drawer-icons"></Image>
+      <Label row="1" col="1" text="Calendar" textWrap="true" class="drawer-labels" verticalAlignment="middle" [nsRouterLink]="['/notes/calendar']"></Label>
+    </GridLayout>
+  </StackLayout>
+  <GridLayout tkMainContent>
+    <GridLayout rows="auto, *, auto" id="page">
+      <GridLayout tkExampleTitle tkToggleNavButton>
+        <RadListView [items]="dataItems" id="notes-list-view">
+          <ng-template tkListItemTemplate let-item="item">
+            <CardView id="note-card" (LongPress)="startSelection(item.noteId)" (tap)="select(item.noteId)">
+              <GridLayout rows="auto,auto" [ngClass]="{selected: item.isSelected}">
+                <Label row="0" class="note-labels" [text]="item.title" textWrap="true" [ngClass]="{forEmptyField: 0 >= item.note.length, bold: 0 < item.note.length}"></Label>
+                <Label row="1" class="note-labels" [text]="item.note" textWrap="true" [ngClass]="{forEmptyField: 0 >= item.title.length}"></Label>
+              </GridLayout>
+            </CardView>
+          </ng-template>
+          <ListViewStaggeredLayout tkListViewLayout scrollDirection="Vertical" spanCount="2"></ListViewStaggeredLayout>
+        </RadListView>
+      </GridLayout>
+      <GridLayout columns="*, auto" row="2"  id="bottom-bar" (tap)="goToNewNoteView()">
+        <Label text="Take a note..." textWrap="true" id="bottom-bar-label"></Label>
+        <Image col="2" src="res://baseline_edit_black_18" id="bottom-bar-icon"></Image>
+      </GridLayout>
+    </GridLayout>
+  </GridLayout>
+</RadSideDrawer>

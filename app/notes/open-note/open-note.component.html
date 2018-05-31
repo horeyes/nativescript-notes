@@ -1,0 +1,39 @@
+<ActionBar title="" class="action-bar">
+  <NavigationButton icon="res://baseline_arrow_back_white_24" (tap)="goBack()"></NavigationButton>
+  <Image src="res://baseline_event_white_24" id="event-icon" horizontalAlignment="Right" (tap)="drawerToggle()"></Image>
+</ActionBar>
+<RadSideDrawer tkExampleTitle tkToggleNavButton drawerLocation="Bottom" (drawerOpened)="onDrawerOpened()" (drawerClosed)="onDrawerClosed()">
+  <StackLayout tkDrawerContent class="drawer">
+    <GridLayout rows="auto, *">
+      <StackLayout row="0" orientation="horizontal">
+        <Label text="Add to App Calendar" textWrap="true" id="drawer-label"></Label>
+        <Switch [checked]="_note.hasDateChecked " (checkedChange)="onSwitchChange($event)" class="switch"></Switch>
+      </StackLayout>
+
+      <RadDataForm #myDataForm row="1" colSpan="2" [source]="_noteDateForm" tkExampleTitle tkToggleNavButton>
+        <TKPropertyGroup tkDataFormGroups collapsible="false" name="Select Day and Time" hidden="false">
+          <TKDataFormGridLayout tkPropertyGroupLayout></TKDataFormGridLayout>
+
+          <TKEntityProperty tkPropertyGroupProperties name="day" displayName="" index="0" columnIndex="0" imageResource="res://baseline_event_black_24"
+            [readOnly]="!_note.hasDateChecked ">
+            <TKPropertyEditor tkEntityPropertyEditor type="DatePicker">
+            </TKPropertyEditor>
+          </TKEntityProperty>
+
+          <TKEntityProperty tkPropertyGroupProperties name="time" displayName="" index="0" columnIndex="1" imageResource="res://baseline_alarm_black_24"
+            [readOnly]="!_note.hasDateChecked ">
+            <TKPropertyEditor tkEntityPropertyEditor type="TimePicker">
+            </TKPropertyEditor>
+          </TKEntityProperty>
+        </TKPropertyGroup>
+      </RadDataForm>
+
+    </GridLayout>
+  </StackLayout>
+  <GridLayout tkMainContent>
+    <StackLayout id="text-views-container">
+      <TextView class="text-view" id="title-text-view" hint="Title" text="" [(ngModel)]="_note.title" editable="true"></TextView>
+      <TextView class="text-view" hint="Note" text="" [(ngModel)]="_note.note" editable="true"></TextView>
+    </StackLayout>
+  </GridLayout>
+</RadSideDrawer>

@@ -1,0 +1,13 @@
+.drawer-icons{
+    height: 24dp;
+    margin-top: 16dp;
+}
+
+.drawer-labels{
+     margin-left: 16dp;
+     margin-top: 16dp;
+}
+
+#drawer{
+    margin: 16dp;
+}

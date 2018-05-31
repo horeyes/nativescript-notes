@@ -1,0 +1,65 @@
+#action-bar-icon{
+    height: 24dp;
+    margin-right: 16dp;
+}
+
+.drawer-icons{
+    height: 24dp;
+    margin-top: 16dp;
+}
+
+.drawer-labels{
+     margin-left: 16dp;
+     margin-top: 16dp;
+}
+
+#drawer{
+    margin: 16dp;
+}
+
+#page{
+    background-color: #E8E8E8;
+}
+
+#notes-list-view{
+    margin:2dp 4dp 0dp 2dp;
+}
+
+#note-card{
+    margin: 4dp;
+}
+
+.note-labels{
+    margin: 6dp 8dp;
+}
+
+.selected{
+    background-color: #bfbfbf;
+}
+
+.forEmptyField{
+    font-size: 30dp;
+    font-weight: normal;
+}
+
+.normal{
+    font-weight: bold;
+}
+
+#bottom-bar{
+    height: 50dp;
+    background-color: white;
+}
+
+#bottom-bar-label{
+    vertical-align: middle;
+    margin-left: 16dp;
+}
+
+#bottom-bar-icon{
+    height: 20dp;
+    opacity: .6;
+    margin-right: 16dp;
+}
+
+

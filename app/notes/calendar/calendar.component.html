@@ -1,0 +1,20 @@
+<ActionBar title="Notes" icon="" class="action-bar">
+  <NavigationButton icon="res://baseline_menu_white_24" (tap)="drawerToggle()"></NavigationButton>
+
+</ActionBar>
+
+
+<RadSideDrawer tkExampleTitle tkToggleNavButton drawerLocation="left" (drawerOpened)="onDrawerOpened()" (drawerClosed)="onDrawerClosed()">
+  <StackLayout tkDrawerContent backgroundColor="white">
+    <GridLayout rows="auto, auto" columns="auto, *" verticalAlignment="top" horizontalAlignment="left" id="drawer">
+      <Image col="0" src="res://baseline_notes_black_24" class="drawer-icons"></Image>
+      <Label col="1" text="Notes" textWrap="true" class="drawer-labels" verticalAlignment="middle" [nsRouterLink]="['/notes']"></Label>
+
+      <Image row="1" col="0" src="res://baseline_event_black_24" class="drawer-icons"></Image>
+      <Label row="1" col="1" text="Calendar" textWrap="true" class="drawer-labels" verticalAlignment="middle" [nsRouterLink]="['/notes/calendar']"></Label>
+    </GridLayout>
+  </StackLayout>
+  <GridLayout tkMainContent>
+    <RadCalendar [eventSource]="eventSource" (dateSelected)="onDateSelected($event)"></RadCalendar>
+  </GridLayout>
+</RadSideDrawer>
